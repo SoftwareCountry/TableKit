@@ -34,6 +34,8 @@ open class TableSection {
     open var headerHeight: CGFloat? = nil
     open var footerHeight: CGFloat? = nil
     
+    internal var updates: TableSectionUpdates? = nil
+    
     open var numberOfRows: Int {
         return rows.count
     }
@@ -101,6 +103,13 @@ open class TableSection {
         rows.remove(at: index)
     }
     
+    // MARK: - Section updates -
+    
+    open func applyUpdates(on tableView: UITableView?) {
+        updates?.apply(on: tableView)
+        updates = nil
+    }
+
     // MARK: - deprecated methods -
     
     @available(*, deprecated, message: "Use 'delete(rowAt:)' method instead")
