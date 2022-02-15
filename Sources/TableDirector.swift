@@ -198,11 +198,6 @@ open class TableDirector: NSObject, UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: row.reuseIdentifier, for: indexPath)
         
-        if cell.frame.size.width != tableView.frame.size.width {
-            cell.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: cell.frame.size.height)
-            cell.layoutIfNeeded()
-        }
-        
         row.configure(cell)
         invoke(action: .configure, cell: cell, indexPath: indexPath)
         
